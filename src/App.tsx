@@ -400,13 +400,14 @@ export default function App() {
           ? 'bg-white/80 backdrop-blur-2xl border-zinc-200/80 text-zinc-800 shadow-sm'
           : 'bg-surface-container-highest border-[#3c4949]/30 text-on-surface'
       }`}>
-        <div className="flex items-center space-x-4">
+        <div className="flex items-center space-x-2 md:space-x-4">
           <span className={`text-sm font-bold tracking-tight transition-colors ${
             isLight ? 'text-zinc-900' : 'text-primary'
           }`}>
             Kali Linux
           </span>
-          <nav className="flex space-x-2 h-full text-xs">
+          {/* Nav — hidden on small screens */}
+          <nav className="hidden md:flex space-x-2 h-full text-xs">
             {/* Applications dropdown */}
             <div className="relative h-full">
               <button
@@ -516,8 +517,8 @@ export default function App() {
           </nav>
         </div>
 
-        {/* Network and systems triggers bar */}
-        <div className={`flex items-center space-x-4 text-xs font-bold transition-colors ${
+        {/* Right side controls — compact on mobile */}
+        <div className={`flex items-center space-x-2 md:space-x-4 text-xs font-bold transition-colors ${
           isLight ? 'text-zinc-700' : 'text-primary'
         }`}>
           <div className="flex items-center space-x-3">
@@ -568,14 +569,14 @@ export default function App() {
               )}
             </button>
 
-            {/* Battery standard label */}
-            <div className="flex items-center gap-1 opacity-80 shrink-0" title="Simulated power loop status: Charging">
+            {/* Battery standard label — hidden on mobile */}
+            <div className="hidden sm:flex items-center gap-1 opacity-80 shrink-0" title="Simulated power loop status: Charging">
               <Battery className={`w-4 h-4 ${isLight ? 'text-emerald-600' : 'text-emerald-400'}`} />
               <span className={`text-[9px] font-mono hidden sm:inline ${isLight ? 'text-zinc-500' : 'text-slate-400'}`}>100% (AC)</span>
             </div>
 
-            {/* Volume label */}
-            <div className="flex items-center gap-1 opacity-80 shrink-0" title="Kernel audio master node">
+            {/* Volume label — hidden on mobile */}
+            <div className="hidden sm:flex items-center gap-1 opacity-80 shrink-0" title="Kernel audio master node">
               <Volume2 className={`w-4 h-4 ${isLight ? 'text-blue-500' : 'text-sky-400'}`} />
             </div>
 
@@ -634,9 +635,9 @@ export default function App() {
       )}
 
       {/* ==================== 2. DESKTOP WORKSPACE ==================== */}
-      <div className="pt-10 pl-4 pr-4 pb-8 w-full h-full relative z-10 select-none overflow-hidden">
-        {/* Desktop Icons Grid — top-left */}
-        <div className="flex flex-wrap content-start gap-2 mt-2 max-w-xs">
+      <div className="pt-10 pl-2 pr-2 md:pl-4 md:pr-4 pb-8 w-full h-full relative z-10 select-none overflow-y-auto">
+        {/* Desktop Icons Grid — responsive, scrollable on mobile */}
+        <div className="flex flex-wrap content-start justify-center md:justify-start gap-1 md:gap-2 mt-2 w-full">
 
           {/* Terminal Icon */}
           <div onClick={() => handleOpenApp('terminal')} className={`flex flex-col items-center justify-center p-2 w-22 h-22 cursor-pointer group hover:scale-105 active:scale-95 border border-transparent rounded-xl transition-all ${isLight ? 'hover:bg-white/30 hover:border-white/50 hover:shadow-md' : 'hover:bg-black/30 hover:border-[#00d4aa]/40'}`}>
@@ -836,17 +837,14 @@ export default function App() {
       ))}
  
       {/* ==================== 6. SYSTEM STATUS FOOTER BAR ==================== */}
-      <footer className={`fixed bottom-0 left-0 w-full z-[998] flex items-center justify-between px-4 h-6 font-mono text-[10px] select-none transition-all duration-350 border-t ${
+      <footer className={`fixed bottom-0 left-0 w-full z-[998] flex items-center justify-between px-3 md:px-4 h-6 font-mono text-[10px] select-none transition-all duration-350 border-t ${
         isLight
           ? 'bg-white/80 backdrop-blur-xl border-zinc-200/80 text-zinc-500 shadow-sm'
           : 'bg-surface-container-lowest border-t border-[#3c4949]/20 text-slate-500'
       }`}>
         <div className="flex items-center space-x-1">
-          <span>&copy; {new Date().getFullYear()} Devidas Portfolio - Offensive Penetration Platform</span>
-          <span className={`hidden sm:inline px-1 ${isLight ? 'text-zinc-300' : 'text-secondary'}`}>|</span>
-          <span className="text-[10px] hidden sm:inline flex items-center gap-1">
-            <Heart className={`w-2.5 h-2.5 ${isLight ? 'text-red-500' : 'text-tertiary'}`} /> Dedicated To Secure System Architectures
-          </span>
+          <span className="hidden sm:inline">&copy; {new Date().getFullYear()} Devidas Portfolio</span>
+          <span className="sm:hidden text-[10px]">&copy; Devidas</span>
         </div>
         <div className="flex items-center space-x-4">
           <a
