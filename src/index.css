@@ -1,0 +1,99 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, monospace;
+
+  /* Custom theme colors to matches Kali layout exactly */
+  --color-background: #111318;
+  --color-surface-variant: #22252a;
+  --color-surface-container: #1e2024;
+  --color-surface-container-highest: #333539;
+  --color-primary: #54d9dd;
+  --color-primary-container: #2bbcc0;
+  --color-secondary: #70d3f2;
+  --color-tertiary: #ffb4ac;
+  --color-error: #ff5555;
+  --color-on-background: #f8fafc;
+  --color-on-surface: #e2e8f0;
+  --color-on-surface-variant: #94a3b8;
+  --color-outline-variant: #3c4949;
+}
+
+html, body, #root {
+  font-family: var(--font-sans), "Inter", sans-serif;
+  background-color: #05070a;
+  color: var(--color-on-background);
+}
+
+input, textarea, button, select {
+  font-family: inherit;
+}
+
+/* Custom Webkit scrollbar for technical Linux window styling */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #111318;
+}
+::-webkit-scrollbar-thumb {
+  background: #3c4949;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #54d9dd;
+}
+
+/* Cursor and prompt animations */
+@keyframes cursor-blink {
+  50% { opacity: 0; }
+}
+
+.animate-cursor-blink {
+  animation: cursor-blink 1s step-end infinite;
+}
+
+/* Glassmorphism panel styling */
+.glass-panel {
+  background: rgba(22, 27, 34, 0.82);
+  backdrop-filter: blur(20px);
+  border: 1px solid #30363d;
+}
+
+/* CRT glows and theme overrides */
+.terminal-glow {
+  text-shadow: 0 0 5px rgba(84, 217, 221, 0.45);
+}
+
+.terminal-input-glow:focus-within {
+  box-shadow: 0 0 10px rgba(43, 188, 192, 0.3);
+  border-color: #2bbcc0;
+}
+
+/* Custom mousepad selection coloring */
+::selection {
+  background: rgba(43, 188, 192, 0.25);
+  color: #54d9dd;
+}
+
+/* Fullscreen cyber-mesh background layer */
+.kali-matrix-bg {
+  background-color: #05070a;
+  background-image: 
+    radial-gradient(circle at 50% 50%, rgba(43, 188, 192, 0.05) 0%, transparent 60%),
+    linear-gradient(rgba(43, 188, 192, 0.015) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(43, 188, 192, 0.015) 1px, transparent 1px);
+  background-size: 100% 100%, 32px 32px, 32px 32px;
+}
+
+.wallpaper-overlay {
+  background-image: radial-gradient(circle at center, rgba(43, 188, 192, 0.04) 0%, transparent 75%);
+}
+
+/* Dragon watermark layer */
+.dragon-opacity {
+  opacity: 0.16;
+}
